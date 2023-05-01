@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Chefs = () => {
     const chefs = [
@@ -63,7 +64,7 @@ const Chefs = () => {
                         <p className="text-gray-500 mb-2">{chef.experience} years of experience</p>
                         <p className="text-gray-500 mb-2">{chef.recipes} recipes</p>
                         <p className="text-gray-500 mb-4">{chef.likes} likes</p>
-                        <button className="bg-gray-800 text-white py-2 px-4 rounded-full transition-all duration-200 hover:bg-gray-900">View Recipes</button>
+                        <Link to="/chefrecipes" className="bg-gray-800 text-white py-2 px-4 rounded-full transition-all duration-200 hover:bg-gray-900">View Recipes</Link>
                     </div>
                 ))}
             </div>
