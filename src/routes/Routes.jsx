@@ -5,11 +5,13 @@ import Login from "../pages/Login";
 import Register from "../pages/Register";
 import HomeLayout from "../layout/HomeLayout";
 import ChefRecipes from "../components/ChefRecipes";
+import ErrorPage from "../pages/ErrorPage";
 
 const router = createBrowserRouter([
     {
         path: '/',
         element: <HomeLayout />,
+        errorElement: <ErrorPage />,
         children: [
             {
                 path: '/',
