@@ -1,3 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.profile-name{
+    display: none;
+}
+.profile-picture:hover .profile-name{
+    display: block;
+}
