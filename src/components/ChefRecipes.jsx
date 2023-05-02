@@ -1,4 +1,5 @@
 import React from "react";
+import ChefRecipesCard from "./ChefRecipesCard";
 
 const ChefRecipes = () => {
     return (
@@ -66,6 +67,8 @@ const ChefRecipes = () => {
                     </div>
                 </div>
             </div>
+
+            <ChefRecipesCard />
         </>
     );
 };
