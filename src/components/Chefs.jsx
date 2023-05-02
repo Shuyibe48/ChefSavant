@@ -10,6 +10,15 @@ const Chefs = () => {
             experience: 10,
             recipes: 50,
             likes: 100,
+            recipe: {
+                image: 'https://cdn.pixabay.com/photo/2016/12/26/17/28/spaghetti-1932466__340.jpg',
+                chefName: "Chef John",
+                recipeName: "Lemon Garlic Butter Shrimp",
+                ingredients: ["1 lb. raw shrimp", "1/4 cup butter", "1 lemon, juiced", "4 cloves garlic, minced", "1/4 tsp. red pepper flakes", "Salt and pepper to taste"],
+                cookingMethod: "1. Melt butter in a large skillet over medium heat. \n2. Add garlic and red pepper flakes and cook for 1-2 minutes. \n3. Add shrimp and lemon juice to the skillet and cook until shrimp turn pink, about 3-4 minutes. \n4. Season with salt and pepper to taste. Serve hot.",
+                rating: 4.5,
+                favorite: false
+            }
         },
         {
             id: 2,

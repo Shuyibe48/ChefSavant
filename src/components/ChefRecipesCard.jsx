@@ -5,7 +5,7 @@ import { StarIcon, HeartIcon } from '@heroicons/react/24/solid'
 const RecipeCard = () => {
 
     const recipe = {
-        image: 'https://panlasangpinoy.com/wp-content/uploads/2016/05/what-is-a-chef-de-cuisiine.jpg',
+        image: 'https://cdn.pixabay.com/photo/2016/12/26/17/28/spaghetti-1932466__340.jpg',
         chefName: "Chef John",
         recipeName: "Lemon Garlic Butter Shrimp",
         ingredients: ["1 lb. raw shrimp", "1/4 cup butter", "1 lemon, juiced", "4 cloves garlic, minced", "1/4 tsp. red pepper flakes", "Salt and pepper to taste"],
@@ -24,7 +24,7 @@ const RecipeCard = () => {
         <div className="bg-white rounded-lg overflow-hidden shadow-md">
             <img className="w-full h-48 object-cover" src={recipe.image} alt="" />
             <div className="p-4">
-                <div className="font-bold text-lg">{recipe.chefName}</div>
+                <div className="font-bold text-lg">{recipe.recipeName}</div>
                 <div className="mt-2 text-gray-500 text-sm">
                     <span className="font-semibold">Ingredients: </span>
                     {recipe.ingredients.join(", ")}
