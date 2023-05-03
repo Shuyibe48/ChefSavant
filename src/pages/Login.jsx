@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../provider/AuthProvider';
 
 const Login = () => {
-  const { signIn } = useContext(AuthContext)
+  const { signIn, signInWithGoogle, signInWithGithub } = useContext(AuthContext)
 
   // const [email, setEmail] = useState('');
   // const [password, setPassword] = useState('');
@@ -74,10 +74,10 @@ const Login = () => {
           <hr className="w-1/4" />
         </div>
         <div className="grid grid-cols-2 gap-4 mb-4">
-          <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+          <button onClick={signInWithGoogle} className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
             Google
           </button>
-          <button className="bg-gray-800 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+          <button onClick={signInWithGithub} className="bg-gray-800 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
             GitHub
           </button>
         </div>
