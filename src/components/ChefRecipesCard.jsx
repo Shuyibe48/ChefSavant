@@ -2,19 +2,12 @@ import { useState } from "react";
 import { StarIcon, HeartIcon } from '@heroicons/react/24/solid'
 
 
-const RecipeCard = () => {
+const RecipeCard = ({ chefRecipe }) => {
 
-    const recipe = {
-        image: 'https://cdn.pixabay.com/photo/2016/12/26/17/28/spaghetti-1932466__340.jpg',
-        chefName: "Chef John",
-        recipeName: "Lemon Garlic Butter Shrimp",
-        ingredients: ["1 lb. raw shrimp", "1/4 cup butter", "1 lemon, juiced", "4 cloves garlic, minced", "1/4 tsp. red pepper flakes", "Salt and pepper to taste"],
-        cookingMethod: "1. Melt butter in a large skillet over medium heat. \n2. Add garlic and red pepper flakes and cook for 1-2 minutes. \n3. Add shrimp and lemon juice to the skillet and cook until shrimp turn pink, about 3-4 minutes. \n4. Season with salt and pepper to taste. Serve hot.",
-        rating: 4.5,
-        favorite: false
-    }
+    console.log(chefRecipe)
+    const { chefRatings, cookingMethod, favorite, ingredients, recipeName, image } = chefRecipe
 
-    const [isFavorite, setIsFavorite] = useState(recipe.favorite);
+    const [isFavorite, setIsFavorite] = useState(favorite);
 
     const handleFavoriteClick = () => {
         setIsFavorite(!isFavorite);
@@ -22,20 +15,20 @@ const RecipeCard = () => {
 
     return (
         <div className="bg-white rounded-lg overflow-hidden shadow-md">
-            <img className="w-full h-48 object-cover" src={recipe.image} alt="" />
+            <img className="w-full h-48 object-cover" src={image} alt="" />
             <div className="p-4">
-                <div className="font-bold text-lg">{recipe.recipeName}</div>
+                <div className="font-bold text-lg">{recipeName}</div>
                 <div className="mt-2 text-gray-500 text-sm">
                     <span className="font-semibold">Ingredients: </span>
-                    {recipe.ingredients.join(", ")}
+                    {ingredients.map(i => <li>{i}</li>)}
                 </div>
                 <div className="mt-2 text-gray-500 text-sm">
                     <span className="font-semibold">Cooking Method: </span>
-                    {recipe.cookingMethod}
+                    {cookingMethod}
                 </div>
                 <div className="mt-2 flex items-center">
                     <StarIcon className="h-5 w-5 text-yellow-400 mr-1" />
-                    <span className="font-semibold text-gray-600">{recipe.rating.toFixed(1)}</span>
+                    <span className="font-semibold text-gray-600">{chefRatings.toFixed(1)}</span>
                 </div>
                 <button className={`mt-4 bg-gray-800 font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline`} disabled={isFavorite === true} onClick={handleFavoriteClick}>
                     {isFavorite ? <HeartIcon className="h-6 w-6 text-pink-500"/> : <HeartIcon className="h-6 w-6 text-white"/>}

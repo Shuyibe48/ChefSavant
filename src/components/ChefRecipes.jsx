@@ -4,8 +4,7 @@ import { useLoaderData } from "react-router-dom";
 
 const ChefRecipes = () => {
     const chefInfo = useLoaderData()
-    console.log(chefInfo)
-    const { chefBio, chefName, chefPicture, like, recipes, yearsOfExperience} = chefInfo
+    const { chefBio, chefName, chefPicture, like, recipes, yearsOfExperience, chefRecipes } = chefInfo
 
     return (
         <>
@@ -72,8 +71,17 @@ const ChefRecipes = () => {
                     </div>
                 </div>
             </div>
-
-            <ChefRecipesCard />
+            <div>
+                <h2 className="text-4xl font-bold mb-8 text-center">Top Recipes</h2>
+                <div className="container my-12 mx-auto lg:grid grid-cols-3 gap-4">
+                    {
+                        chefRecipes.map(rcp => <ChefRecipesCard
+                            key={rcp.id}
+                            chefRecipe={rcp}
+                        />)
+                    }
+                </div>
+            </div>
         </>
     );
 };
