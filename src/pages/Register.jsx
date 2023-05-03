@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../provider/AuthProvider";
 
 const Register = () => {
-  const { createUser } = useContext(AuthContext)
+  const { createUser, updateUser } = useContext(AuthContext)
 
   // const [name, setName] = useState("");
   // const [email, setEmail] = useState("");
@@ -18,18 +18,19 @@ const Register = () => {
     const password = form.password.value
     const photo = form.photo.value
 
-    console.log(name, email, password, photo);
-
     createUser(email, password)
     .then(result => {
       const createdUser = result.user
       console.log(createdUser);
+      updateUser(result.user, name, photo)
+      .then(() => {})
     })
     .catch(error => {
       const errorMessage = error.message
       console.log(errorMessage);
     })
   };
+
 
   return (
     <div className="w-full max-w-md mx-auto my-12">
