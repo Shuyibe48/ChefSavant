@@ -1,14 +1,34 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { AuthContext } from "../provider/AuthProvider";
 
 const Register = () => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [photoURL, setPhotoURL] = useState("");
+  const { createUser } = useContext(AuthContext)
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Your form submission logic goes here
+  // const [name, setName] = useState("");
+  // const [email, setEmail] = useState("");
+  // const [password, setPassword] = useState("");
+  // const [photoURL, setPhotoURL] = useState("");
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    
+    const form = event.target
+    const name = form.name.value
+    const email = form.email.value
+    const password = form.password.value
+    const photo = form.photo.value
+
+    console.log(name, email, password, photo);
+
+    createUser(email, password)
+    .then(result => {
+      const createdUser = result.user
+      console.log(createdUser);
+    })
+    .catch(error => {
+      const errorMessage = error.message
+      console.log(errorMessage);
+    })
   };
 
   return (
@@ -24,8 +44,10 @@ const Register = () => {
             id="name"
             type="text"
             placeholder="Enter your name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
+            name="name"
+            required
+            // value={name}
+            // onChange={(e) => setName(e.target.value)}
           />
         </div>
         <div className="mb-4">
@@ -36,9 +58,11 @@ const Register = () => {
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             id="email"
             type="email"
+            name="email"
             placeholder="Enter your email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            required
+            // value={email}
+            // onChange={(e) => setEmail(e.target.value)}
           />
         </div>
         <div className="mb-4">
@@ -49,9 +73,11 @@ const Register = () => {
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             id="password"
             type="password"
+            name="password"
             placeholder="Enter your password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            required
+            // value={password}
+            // onChange={(e) => setPassword(e.target.value)}
           />
         </div>
         <div className="mb-6">
@@ -62,9 +88,11 @@ const Register = () => {
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             id="photoURL"
             type="text"
+            name="photo"
             placeholder="Enter your photo URL"
-            value={photoURL}
-            onChange={(e) => setPhotoURL(e.target.value)}
+            required
+            // value={photoURL}
+            // onChange={(e) => setPhotoURL(e.target.value)}
           />
         </div>
         <div className="flex items-center justify-between">

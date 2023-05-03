@@ -1,7 +1,10 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { AuthContext } from '../provider/AuthProvider';
 
 const Menubar = () => {
+
+    const {user} = useContext(AuthContext)
 
     const location = useLocation();
 
@@ -14,8 +17,6 @@ const Menubar = () => {
     const handleMenuClick = () => {
         setIsMenuOpen(!isMenuOpen);
     };
-
-    const user = null
 
     return (
         <nav className="flex items-center justify-between flex-wrap bg-gray-800 p-6">

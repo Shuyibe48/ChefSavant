@@ -1,13 +1,31 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../provider/AuthProvider';
 
 const Login = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const { signIn } = useContext(AuthContext)
+
+  // const [email, setEmail] = useState('');
+  // const [password, setPassword] = useState('');
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // add login logic here
+
+    const form = event.target
+    const email = form.email.value
+    const password = form.password.value
+
+    console.log(email, password);
+
+    signIn(email, password)
+      .then(result => {
+        const createdUser = result.user
+        console.log(createdUser);
+      })
+      .catch(error => {
+        const errorMessage = error.message
+        console.log(errorMessage);
+      })
   };
 
   return (
@@ -23,8 +41,9 @@ const Login = () => {
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               id="email"
               type="email"
-              value={email}
-              onChange={(event) => setEmail(event.target.value)}
+              name='email'
+              // value={email}
+              // onChange={(event) => setEmail(event.target.value)}
               placeholder="Email"
               required
             />
@@ -37,8 +56,9 @@ const Login = () => {
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               id="password"
               type="password"
-              value={password}
-              onChange={(event) => setPassword(event.target.value)}
+              name='password'
+              // value={password}
+              // onChange={(event) => setPassword(event.target.value)}
               placeholder="Password"
               required
             />
