@@ -9,6 +9,13 @@ const auth = getAuth(app)
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null)
     const [loading, setLoading] = useState(true)
+    const [chefs, setChefs] = useState([])
+
+    useEffect(() => {
+        fetch('http://localhost:5000/chefinfo')
+        .then(res => res.json())
+        .then(data => setChefs(data))
+    }, [])
 
 
     const createUser = (email, password) => {
@@ -49,7 +56,8 @@ const AuthProvider = ({ children }) => {
         signIn,
         updateUser,
         logOut,
-        loading
+        loading,
+        chefs
     }
 
     return (
