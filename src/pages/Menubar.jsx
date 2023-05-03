@@ -3,14 +3,9 @@ import { Link, useLocation } from 'react-router-dom';
 import { AuthContext } from '../provider/AuthProvider';
 
 const Menubar = () => {
-
-    const {user} = useContext(AuthContext)
+    const { user, logOut } = useContext(AuthContext)
 
     const location = useLocation();
-
-    const signOut = () => {
-        console.log('hi')
-    }
 
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -39,14 +34,14 @@ const Menubar = () => {
                     {user ? (
                         <>
                             <div className="relative profile-picture">
-                                <img className="h-8 w-8 rounded-full cursor-pointer" src={user.photoURL || defaultProfilePicture} alt={user.displayName || 'Profile picture'} />
+                                <img className="h-8 w-8 rounded-full cursor-pointer" src={user?.photoURL} alt={user.displayName || 'Profile picture'} />
                                 {user.displayName && (
                                     <div className="absolute profile-name top-0 left-full -ml-1 mt-2 px-2 py-1 bg-white rounded-lg shadow-lg">
                                         {user.displayName}
                                     </div>
                                 )}
                             </div>
-                            <button className="ml-4 px-4 py-2 border rounded text-gray-200 border-gray-400 hover:text-white hover:border-white" onClick={signOut}>
+                            <button className="ml-4 px-4 py-2 border rounded text-gray-200 border-gray-400 hover:text-white hover:border-white" onClick={logOut}>
                                 Log Out
                             </button>
                         </>
