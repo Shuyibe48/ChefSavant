@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 const Menubar = () => {
+
+    const location = useLocation();
 
     const signOut = () => {
         console.log('hi')
@@ -13,7 +15,7 @@ const Menubar = () => {
         setIsMenuOpen(!isMenuOpen);
     };
 
-    const user = { displayName: 'Fahim Ahmed', photoURL: 'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500' }
+    const user = null
 
     return (
         <nav className="flex items-center justify-between flex-wrap bg-gray-800 p-6">
@@ -29,12 +31,8 @@ const Menubar = () => {
             </div>
             <div className={`w-full ${isMenuOpen ? 'block' : 'hidden'} lg:block flex-grow lg:flex lg:items-center lg:w-auto`}>
                 <div className="text-sm lg:flex-grow">
-                    <Link to="/" className="block mt-4 lg:inline-block lg:mt-0 text-gray-200 hover:text-white mr-4">
-                        Home
-                    </Link>
-                    <Link to="/blog" className="block mt-4 lg:inline-block lg:mt-0 text-gray-200 hover:text-white mr-4">
-                        Blog
-                    </Link>
+                    <Link className={`mr-4 ${location.pathname === '/' ? 'text-blue-500 font-bold' : 'text-white hover:text-blue-500'}`} to="/">Home</Link>
+                    <Link className={`mr-4 ${location.pathname === '/blog' ? 'text-blue-500 font-bold' : 'text-white hover:text-blue-500'}`} to="/blog">Blog</Link>
                 </div>
                 <div className="flex items-center">
                     {user ? (
@@ -53,10 +51,10 @@ const Menubar = () => {
                         </>
                     ) : (
                         <>
-                            <Link to="/login" className="text-gray-200 hover:text-white mr-4">
+                            <Link to="/login" className={`mr-4 ${location.pathname === '/login' ? 'text-blue-500 font-bold' : 'text-white hover:text-blue-500'}`}>
                                 Log In
                             </Link>
-                            <Link to="/register" className="px-4 py-2 border rounded text-gray-200 border-gray-400 hover:text-white hover:border-white">
+                            <Link to="/register" className={`mr-4 ${location.pathname === '/register' ? 'text-blue-500 font-bold' : 'text-white hover:text-blue-500'}`}>
                                 Sign Up
                             </Link>
                         </>
