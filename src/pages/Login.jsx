@@ -4,7 +4,7 @@ import { AuthContext } from '../provider/AuthProvider';
 
 const Login = () => {
   const { signIn, signInWithGoogle, signInWithGithub } = useContext(AuthContext)
-  const [ errorMessage, setErrorMessage ] = useState('')
+  const [errorMessage, setErrorMessage] = useState('')
 
   // const [email, setEmail] = useState('');
   // const [password, setPassword] = useState('');
@@ -21,12 +21,12 @@ const Login = () => {
     const email = form.email.value
     const password = form.password.value
 
-    if(password.length < 6){
+    if (password.length < 6) {
       setErrorMessage('Password less then 6 character')
       return
     }
 
-    if(email.length < 0 || password.length < 0){
+    if (email.length < 0 || password.length < 0) {
       setErrorMessage('Cannot submit empty email and password fields')
       return
     }
@@ -39,9 +39,13 @@ const Login = () => {
         navigate(from)
       })
       .catch(error => {
-         setErrorMessage(error.message && 'Invalid email or password!')
+        setErrorMessage(error.message && 'Invalid email or password!')
       })
   };
+
+  const redirectHomePage = () => {
+    navigate('/')
+  }
 
   return (
     <div className="flex flex-col items-center justify-center h-screen">
@@ -91,12 +95,16 @@ const Login = () => {
           <hr className="w-1/4" />
         </div>
         <div className="grid grid-cols-2 gap-4 mb-4">
-          <button onClick={signInWithGoogle} className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
-            Google
-          </button>
-          <button onClick={signInWithGithub} className="bg-gray-800 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
-            GitHub
-          </button>
+          <div onClick={signInWithGoogle}>
+            <button onClick={redirectHomePage} className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+              Google
+            </button>
+          </div>
+          <div onClick={signInWithGithub}>
+            <button onClick={redirectHomePage} className="bg-gray-800 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+              GitHub
+            </button>
+          </div>
         </div>
         <div className="text-center">
           <span className="text-gray-600">Don't have an account?</span>{' '}
