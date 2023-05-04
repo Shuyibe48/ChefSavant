@@ -23,7 +23,7 @@ const Blog = () => {
 
     return (
         <div>
-            <button onClick={downloadpdf} disabled={!(loader === false)} className='text-white bg-slate-800 hover:bg-gray-500 font-bold py-4 px-8 rounded'>
+            <button onClick={downloadpdf} disabled={!(loader === false)} className='text-white ms-12 mt-12 bg-slate-800 hover:bg-gray-500 font-bold py-4 px-8 rounded'>
                 {loader ? <span>DownloadingPDF...</span> : <span>DownloadPDF</span>}
             </button>
             <div className="bg-white rounded-lg shadow-lg p-6 md:p-8 lg:p-10 blogs">
