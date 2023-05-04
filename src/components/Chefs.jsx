@@ -1,9 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../provider/AuthProvider';
+import LazyLoad from 'react-lazy-load';
 
 const Chefs = () => {
-    const {chefs} = useContext(AuthContext)
+    const { chefs } = useContext(AuthContext)
 
 
     return (
@@ -12,7 +13,9 @@ const Chefs = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {chefs.map((chef) => (
                     <div className="bg-white rounded-md shadow-md p-4" key={chef.id}>
-                        <img src={chef.chefPicture} alt={chef.chefName} className="w-full rounded-md mb-4" />
+                        <LazyLoad>
+                            <img src={chef.chefPicture} alt={chef.chefName} className="w-full rounded-md mb-4" />
+                        </LazyLoad>
                         <h3 className="text-xl font-medium">{chef.chefName}</h3>
                         <p className="text-gray-500 mb-2">{chef.yearsOfExperience} years of experience</p>
                         <p className="text-gray-500 mb-2">{chef.recipes} recipes</p>

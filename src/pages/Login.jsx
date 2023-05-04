@@ -1,12 +1,18 @@
 import { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../provider/AuthProvider';
 
 const Login = () => {
   const { signIn, signInWithGoogle, signInWithGithub } = useContext(AuthContext)
+  const [ errorMessage, setErrorMessage ] = useState('')
 
   // const [email, setEmail] = useState('');
   // const [password, setPassword] = useState('');
+
+  const navigate = useNavigate()
+  const location = useLocation()
+
+  const from = location.state?.from?.pathname || '/'
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -14,16 +20,26 @@ const Login = () => {
     const form = event.target
     const email = form.email.value
     const password = form.password.value
+
+    if(password.length < 6){
+      setErrorMessage('Password less then 6 character')
+      return
+    }
+
+    if(email.length < 0 || password.length < 0){
+      setErrorMessage('Cannot submit empty email and password fields')
+      return
+    }
+
     form.reset()
 
     signIn(email, password)
-      .then(result => {
-        const createdUser = result.user
-        console.log(createdUser);
+      .then(() => {
+        setErrorMessage('')
+        navigate(from)
       })
       .catch(error => {
-        const errorMessage = error.message
-        console.log(errorMessage);
+         setErrorMessage(error.message && 'Invalid email or password!')
       })
   };
 
@@ -31,6 +47,7 @@ const Login = () => {
     <div className="flex flex-col items-center justify-center h-screen">
       <div className="bg-white rounded-lg shadow-lg p-8 w-80">
         <h2 className="text-3xl font-bold mb-6 text-gray-800">Login</h2>
+        <span className='text-red-500'>{errorMessage}</span>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
             <label className="block text-gray-700 font-bold mb-2" htmlFor="email">

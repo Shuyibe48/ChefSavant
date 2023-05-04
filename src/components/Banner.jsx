@@ -1,12 +1,16 @@
 import React from 'react';
+import LazyLoad from 'react-lazy-load';
+
 
 const Banner = () => {
     return (
         <div className="relative h-80 w-full">
-            <div
-                className="absolute top-0 left-0 w-full h-full bg-cover bg-center z-0"
-                style={{ backgroundImage: "url('https://images.unsplash.com/photo-1511909525232-61113c912358?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=812&q=80')" }}
-            ></div>
+            <LazyLoad>
+                <div
+                    className="absolute top-0 left-0 w-full h-full bg-cover bg-center z-0"
+                    style={{ backgroundImage: "url('https://images.unsplash.com/photo-1511909525232-61113c912358?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=812&q=80')" }}
+                ></div>
+            </LazyLoad>
             <div className="absolute top-0 left-0 w-full h-full bg-black opacity-50 z-1"></div>
             <div className="ps-4 lg:ps-0 relative z-2 flex flex-col items-center justify-center h-full">
                 <h1 className="text-white text-4xl font-bold mb-4">Welcome to ChefSavant</h1>
