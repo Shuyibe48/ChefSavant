@@ -34,7 +34,7 @@ const router = createBrowserRouter([
             {
                 path: 'chefrecipes/:id',
                 element: <PrivateRoute><ChefRecipes /></PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/chefinfo/${params.id}`)
+                loader: ({ params }) => fetch(`https://chef-savant-server-shuyibe48.vercel.app/chefinfo/${params.id}`)
             },
             {
                 path: 'contact',
