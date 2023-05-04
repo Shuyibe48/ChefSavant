@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { AuthContext } from "../provider/AuthProvider";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Register = () => {
   const { createUser, updateUser } = useContext(AuthContext)
@@ -100,12 +100,12 @@ const Register = () => {
           >
             Register
           </button>
-          <a
+          <Link
             className="ps-4 lg:ps-0 inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800"
-            href="/login"
+            to="/login"
           >
             Already have an account? Log in
-          </a>
+          </Link>
         </div>
       </form>
     </div>
