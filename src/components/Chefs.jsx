@@ -9,7 +9,7 @@ const Chefs = () => {
 
     return (
         <div className="container px-4 lg:px-0 mx-auto py-8">
-            <h2 className="text-4xl font-bold mb-8 text-center">Chefs</h2>
+            <h2 className="text-center text-3xl my-12 font-bold md:text-4xl lg:text-5xl xl:text-6xl">Chefs</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {chefs.map((chef) => (
                     <div className="bg-white rounded-md shadow-md p-4" key={chef.id}>

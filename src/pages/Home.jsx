@@ -4,6 +4,7 @@ import Chefs from '../components/Chefs';
 import RecipeCard from '../components/RecipeCard';
 import { AuthContext } from '../provider/AuthProvider';
 import { RotateLoader } from 'react-spinners';
+import FeaturedRecipe from '../components/FeaturedRecipe';
 
 
 
@@ -20,6 +21,7 @@ const Home = () => {
                         <Banner />
                         <Chefs />
                         <RecipeCard />
+                        <FeaturedRecipe/>
                     </>
             }
         </>

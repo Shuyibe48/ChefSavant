@@ -21,16 +21,6 @@ const Login = () => {
     const email = form.email.value
     const password = form.password.value
 
-    if (password.length < 6) {
-      setErrorMessage('Password less then 6 character')
-      return
-    }
-
-    if (email.length < 0 || password.length < 0) {
-      setErrorMessage('Cannot submit empty email and password fields')
-      return
-    }
-
     form.reset()
 
     signIn(email, password)
